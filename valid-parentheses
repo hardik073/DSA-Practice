@@ -1,0 +1,33 @@
+//Check for valid parentheses
+
+fun main() {
+    val string = "([])"
+    println(isValid(string))
+}
+
+fun isValid(str: String): Boolean{
+    val stack = ArrayDeque<Char>()
+    
+ 	for(ch in str){
+        if(ch == '(' || ch == '[' || ch == '{'){
+            stack.addLast(ch)
+        }else{
+            if(stack.isEmpty()) return false
+            
+            val top = stack.removeLast()
+            
+            if (ch == ')' && top != '(') {
+                return false
+            }
+
+            if (ch == ']' && top != '[') {
+                return false
+            }
+
+            if (ch == '}' && top != '{') {
+                return false
+            }
+        }
+    }   
+    return stack.isEmpty()
+}
