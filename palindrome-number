@@ -1,0 +1,21 @@
+//Check the given number is palindrome
+
+fun main() {
+    val result = isPalindromeNumber(12321)
+    println(result)
+}
+
+fun isPalindromeNumber(num: Int): Boolean{
+    if(num < 0) return false
+    
+ 	var temp = num
+    var reversed = 0
+    
+    while(temp > 0){
+    	val lastDigit = temp % 10
+    	reversed = reversed * 10 + lastDigit
+    	temp /= 10
+    }
+    
+    return reversed == num
+}
