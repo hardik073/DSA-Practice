@@ -6,6 +6,10 @@ fun main() {
 }
 
 fun isValid(str: String): Boolean{
+
+    // Quick optimization: An odd-length string can never have balanced pairs!
+    if (s.length % 2 != 0) return false
+
     val stack = ArrayDeque<Char>()
     
  	for(ch in str){
@@ -16,17 +20,9 @@ fun isValid(str: String): Boolean{
             
             val top = stack.removeLast()
             
-            if (ch == ')' && top != '(') {
-                return false
-            }
-
-            if (ch == ']' && top != '[') {
-                return false
-            }
-
-            if (ch == '}' && top != '{') {
-                return false
-            }
+            if (ch == ')' && top != '(') return false
+            if (ch == '}' && top != '{') return false
+            if (ch == ']' && top != '[') return false
         }
     }   
     return stack.isEmpty()
